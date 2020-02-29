@@ -1,0 +1,46 @@
+#body {
+	position: relative;
+	height: 100vh;
+	width: 80vw;
+	margin: 0 10vw;
+}
+
+#header {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: var(--header-size);
+	border-radius: 0 0 var(--radius) var(--radius);
+	font-size: 2em;
+	color: var(--main);
+}
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: var(--header-size);
+	border-radius: var(--radius) var(--radius) 0 0;
+}
+
+#content {
+	position: absolute;
+	top: 50%;
+	height: calc(100% - 3 * var(--header-size));
+	width: 100%;
+	border-radius: var(--radius);
+	transform: translate(0, -50%);
+}
+
+.center {
+	position: absolute;
+	height: fit-content;
+	width: fit-content;
+}
+
+
+/*#content {
+	height: 100%;
+	width: 100%;
+	background: red;
+}*/
