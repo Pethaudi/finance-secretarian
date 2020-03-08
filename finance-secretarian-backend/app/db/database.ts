@@ -1,21 +1,27 @@
-class Database {
+const sqlite3 = require("sqlite3");
+
+export default class Database {
 
     private static _instance: Database | null = null;
-    static async Instance(): Promise<Database> {
-        if (this._instance) {
-            return new Promise(resolve => {
-                resolve(this._instance!!);
-            })
-        }
-        return async () => {
-            this._instance = await mysql.createConnection({
-                host: "localhost",
-                user: "root",
-                password: "Kurkisnov1!#",
-                database: "finance_secretarian"
-            });
-        }
+    static get Instance(): Database {
+        return this._instance ?? (this._instance = new Database());
     }
 
-    private constructor() {}
+    private db: any; 
+    private constructor() {
+        this.db = new sqlite3.Database("/opt/finance_secretarian.db");
+    }
+
+    execute<T>(query: string, ...params: any): Promise<T> {
+        return new Promise(
+            resolve => {
+                this.db.all(query, ...params, (err: any, result: T) => {
+                    if (err) {
+                        throw err;
+                    }
+                    resolve(result);
+                })
+            }
+        )
+    }
 }

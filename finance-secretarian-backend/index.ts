@@ -1,21 +1,16 @@
 const express = require("express");
 const helmet = require("helmet");
-const mysql = require("mysql2/promise");
 
-// const app = express();
+import Database from "./app/db/database";
+import { UserUow } from "./app/db/user-uow";
+const LoginRouter = require("./app/routers/login-router");
+
+const app = express();
 // const router = express.router();
 
+/*const userUow = UserUow.Instance;
+(async () => console.log(await userUow.isValidUser("pethaudi@yahoo.de", "test")))();*/
 
+app.use("/login",LoginRouter);
 
-testDb();
-
-async function testDb() {
-    const dbConnector = await mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "Kurkisnov1!#",
-        database: "finance_secretarian"
-    });
-    const [rows] = await dbConnector.query("select * from test");
-    console.log(rows[0].name);
-}
+app.listen(3000);
