@@ -1,4 +1,4 @@
-import { Response, Request } from "express";
+import { Response, Request, NextFunction } from "express";
 import { UserUow } from "../db/user-uow";
 
 const express = require("express");
