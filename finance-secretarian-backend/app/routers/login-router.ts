@@ -1,15 +1,21 @@
 import { Response, Request } from "express";
+import { UserUow } from "../db/user-uow";
 
 const express = require("express");
 const LoginRouter = express.Router();
 
-LoginRouter.get("/", (req: Request, res: Response) => {
-	console.log("got this get");
-});
+LoginRouter.post("/", async (req: Request, res: Response) => {
+	if (req.body["email"] && req.body["password"]) {
+		if (await UserUow.Instance.isValidUser(req.body.email, req.body.password)) {
+			res.status(200);
+		} else {
+			res.status(401);
+		}
+	} else {
+		res.status(401);
+	}
 
-LoginRouter.post("/", (req: Request, res: Response) => {
-	console.log(req.body);
-	res.send(req.body);
+	res.send();
 })
 
 module.exports = LoginRouter;

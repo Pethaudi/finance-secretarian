@@ -1,5 +1,3 @@
-/*CREATE DATABASE IF NOT EXISTS db_name;*/
-
 DROP TABLE IF EXISTS SALES;
 DROP TABLE IF EXISTS CATEGORIES;
 DROP TABLE IF EXISTS Users;
@@ -31,8 +29,5 @@ CREATE TABLE SALES (
     FOREIGN KEY (categoryId) REFERENCES CATEGORIES(id),
     FOREIGN KEY (userId) REFERENCES USERS(id)
 );
-/*
-INSERT INTO SALES (categoryId, userId, amount, saledate)
-*/
 INSERT INTO SALES (categoryId, userId, amount, saledate)
     VALUES (1, 1, 5.4, '2020-03-05');
