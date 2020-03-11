@@ -1,6 +1,6 @@
-const sqlite3 = require("sqlite3");
+import * as sqlite3 from "sqlite3";
 
-export default class Database {
+export class Database {
 
     private static _instance: Database | null = null;
     static get Instance(): Database {
