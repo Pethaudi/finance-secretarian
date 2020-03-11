@@ -13,8 +13,13 @@ export class UserUow {
 		this.db = db;
 	}
 
+	/**
+	 * returns the id(s) of the given user-data
+	 * @param email email of the user
+	 * @param password password of the user
+	 */
 	async getUserId(email: string, password: string): Promise<number | null> {
-		const result = await this.db.execute<number[]>("SELECT id FROM USERS WHERE email = ? AND password = ?", email, password);
-		return result.length > 0 ? result[0] : null;
+		const result = await this.db.execute<User[]>("SELECT * FROM USERS WHERE email = ? AND password = ?", email, password);
+		return result.length > 0 ? result[0].id : null;
 	}
 }

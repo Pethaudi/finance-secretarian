@@ -4,10 +4,10 @@ import * as express from "express";
 
 const LoginRouter = express.Router();
 
-LoginRouter.get("/", (req: Request, res: Response) => {
-	res.send("got it");
-});
-
+/**
+ * used for a first validation of the user
+ * passing email and password in the body
+ */
 LoginRouter.post("/", async (req: Request, res: Response) => {
 	if (req.body["email"] && req.body["password"]) {
 		if (await UserUow.Instance.getUserId(req.body.email, req.body.password)) {

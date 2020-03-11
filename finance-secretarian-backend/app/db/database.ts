@@ -12,6 +12,9 @@ export class Database {
         this.db = new sqlite3.Database("/opt/finance_secretarian.db");
     }
 
+    /**
+     * executes a given query with the given params and returns all results
+     */
     execute<T>(query: string, ...params: any): Promise<T> {
         return new Promise(
             resolve => {
