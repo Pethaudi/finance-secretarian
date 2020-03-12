@@ -1,11 +1,12 @@
 import { Response, Request } from "express";
 import * as express from "express";
 import { SalesUow } from "./../db/sales-uow";
+import cors from "cors";
+import Authorization from '../middlewares/authorization-middleware';
 
 const SalesRouter = express.Router();
 
-import Authorization from '../middlewares/authorization-middleware';
-
+SalesRouter.use(cors());
 SalesRouter.use( Authorization);
 
 /**

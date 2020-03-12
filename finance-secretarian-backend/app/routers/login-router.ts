@@ -1,8 +1,11 @@
 import { Response, Request } from "express";
 import { UserUow } from "../db/user-uow";
 import * as express from "express";
+import cors from "cors";
 
 const LoginRouter = express.Router();
+
+LoginRouter.use(cors());
 
 /**
  * used for a first validation of the user
