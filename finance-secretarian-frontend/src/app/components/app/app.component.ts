@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user-service/user.service';
 import { SalesService } from 'src/app/services/sales-service/sales.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
 	selector: 'app-root',
@@ -10,13 +11,7 @@ import { SalesService } from 'src/app/services/sales-service/sales.service';
 export class AppComponent {
 	title = 'finance-secretarian-frontend';
 
-	constructor(private userSerive: UserService, private salesService: SalesService) {
-		this.test();
-	}
-
-	async test() {
-		await this.userSerive.login("pethaudi@yahoo.de", "test");
-		await this.userSerive.login("pethaudi@yahoo.de", "test");
-		console.log(await this.salesService.getSales());
+	constructor(private translate: TranslateService) {
+		this.translate.use("en");
 	}
 }

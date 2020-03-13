@@ -1,0 +1,39 @@
+#body {
+    position: relative;
+    height: 100vh;
+    background: var(--background-dark);
+}
+
+#body > div {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background: var(--background-light);
+    width: 80vw;
+    max-width: var(--lg);
+}
+
+#header {
+    top: 0;
+    height: var(--height);
+    border-radius: 0 0 var(--radius) var(--radius);
+}
+
+#footer {
+    bottom: 0;
+    height: var(--height);
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+
+#body > div#content {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: calc(100% - 3 * var(--height));
+    border-radius: var(--radius);
+}
+
+@media screen and (max-width: 768px) {
+    #body > div {
+        width: 100%;
+    }
+}

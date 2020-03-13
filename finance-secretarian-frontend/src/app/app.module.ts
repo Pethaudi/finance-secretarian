@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 import { AppComponent } from './components/app/app.component';
 import { LoginComponent } from './components/login/login.component';
 import { OtherComponent } from './components/other/other.component';
@@ -19,6 +21,14 @@ import { ErrorInterceptor } from './helpers-pipes/error-interceptor/error.interc
 		BrowserModule,
 		HttpClientModule,
 		AppRoutingModule,
+		TranslateModule.forRoot({
+			defaultLanguage: "en",
+			loader: {
+				provide: TranslateLoader,
+				useFactory: HttpLoaderFactory,
+				deps: [HttpClient]
+			}
+		})
 	],
 	providers: [
 		{
@@ -34,3 +44,8 @@ import { ErrorInterceptor } from './helpers-pipes/error-interceptor/error.interc
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http);
+}

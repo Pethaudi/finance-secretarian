@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    /* RGB */
+    --background-dark: rgba(51, 51, 51, 1);
+    --background-light: rgba(251, 251, 251, 1);
+    --primary: rgba(92, 128, 188, 1);
+    --secondary: rgba(70, 129, 137, 1);
+    --contrary: rgba(148, 27, 12, 1);
+
+    --height: 5rem;
+    --radius: 0.2rem; 
+
+    /* bootstrap sizes */
+    --xs: 768px;
+    --md: 992px;
+    --lg: 1200px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Nunito;
+}
