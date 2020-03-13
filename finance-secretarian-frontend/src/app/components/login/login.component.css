@@ -1,0 +1,42 @@
+#body {
+    height: fit-content;
+    width: fit-content;
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+h2 {
+    color: var(--text);
+    text-align: center;
+    font-size: 2em;
+}
+
+input {
+    width: 15rem;
+    display: block;
+    margin-top: var(--margin);
+}
+
+button {
+    margin-top: var(--margin);
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+button.error {
+    background: red;
+}
+
+form.ng-touched.ng-dirty.ng-invalid > button {
+    background: var(--contrary);
+    cursor: default;
+}
+
+form.ng-touched.ng-dirty.ng-invalid > button:hover {
+    color: var(--background-light);
+    border: none;
+    border-radius: var(--radius);
+}

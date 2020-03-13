@@ -1,5 +1,11 @@
 {
     "app": {
         "header": "Finance Secretarian"
+    },
+    "login": {
+        "header": "Please login:",
+        "email": "Email",
+        "password": "Password",
+        "login": "LOGIN"
     }
 }

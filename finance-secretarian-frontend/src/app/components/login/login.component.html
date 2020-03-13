@@ -1,1 +1,10 @@
-<p>login works!</p>
+<div id="body">
+    <form #loginForm="ngForm">
+        <h2>{{ "login.header" | translate }}</h2>
+        <input type="email" placeholder="{{ 'login.email' | translate }}"
+            [(ngModel)]="email" required name="email" autocomplete="email">
+        <input type="password" placeholder="{{ 'login.password' | translate }}"
+            [(ngModel)]="password" required name="password" autocomplete="current-password">
+        <button>{{ "login.login" | translate }}</button>
+    </form>
+</div>

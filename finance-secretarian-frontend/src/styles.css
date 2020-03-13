@@ -6,9 +6,11 @@
     --primary: rgba(92, 128, 188, 1);
     --secondary: rgba(70, 129, 137, 1);
     --contrary: rgba(148, 27, 12, 1);
+    --text: var(--background-dark);
 
     --height: 5rem;
     --radius: 0.2rem; 
+    --margin: 0.5rem;
 
     /* bootstrap sizes */
     --xs: 768px;
@@ -16,8 +18,37 @@
     --lg: 1200px;
 }
 
-body {
+body, h1, h2 {
     margin: 0;
     padding: 0;
     font-family: Ubuntu, "sans-serif";
+}
+
+input {
+    background: none;
+    border: none;
+    border-bottom: 0.1rem solid var(--background-dark);
+    font-size: 1.5em;
+    outline: none;
+}
+
+input:focus {
+    border-bottom-color: var(--primary);
+}
+
+button {
+    background: var(--background-dark);
+    color: var(--background-light);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1.5em;
+    min-width: 5em;
+    cursor: pointer;
+    outline: none;
+}
+
+button:hover {
+    background: var(--background-light);
+    color: var(--primary);
+    border: 0.1rem solid var(--primary);
 }

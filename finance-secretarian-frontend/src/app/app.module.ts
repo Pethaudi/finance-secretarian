@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -19,9 +20,10 @@ import { AuthGuard } from './helpers-pipes/auth-guard/auth.guard';
 		OtherComponent
 	],
 	imports: [
-		BrowserModule,
+        FormsModule, 
+        BrowserModule,
 		HttpClientModule,
-		AppRoutingModule,
+        AppRoutingModule,
 		TranslateModule.forRoot({
 			defaultLanguage: "en",
 			loader: {
