@@ -19,6 +19,28 @@
     border-radius: 0 0 var(--radius) var(--radius);
 }
 
+#heading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: fit-content;
+    width: fit-content;
+    font-size: 3em;
+    color: var(--primary);
+}
+
+#heading::after {
+    content: "";
+    width: calc(100% + 3em);
+    height: 0.1rem;
+    position: absolute;
+    bottom: 0;
+    left: -1.5em;
+    background: var(--primary)
+}
+
 #footer {
     bottom: 0;
     height: var(--height);
@@ -34,6 +56,15 @@
 
 @media screen and (max-width: 768px) {
     #body > div {
+        width: 100%;
+    }
+
+    #heading {
+        font-size: 2em;
+    }
+
+    #heading::after {
+        left: 0;
         width: 100%;
     }
 }
