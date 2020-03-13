@@ -26,17 +26,7 @@ button {
     transform: translate(-50%, 0);
 }
 
-button.error {
-    background: red;
-}
-
-form.ng-touched.ng-dirty.ng-invalid > button {
-    background: var(--contrary);
+button:disabled {
+    opacity: 0.7;
     cursor: default;
-}
-
-form.ng-touched.ng-dirty.ng-invalid > button:hover {
-    color: var(--background-light);
-    border: none;
-    border-radius: var(--radius);
 }

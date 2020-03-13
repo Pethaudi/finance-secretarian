@@ -7,13 +7,10 @@ import { UserService } from 'src/app/services/user-service/user.service';
 	providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-	constructor(private userService: UserService, private router: Router) {
-        console.log("guard got created");
-    }
+	constructor(private userService: UserService, private router: Router) { }
 
 	canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot)
 			: Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        console.log("guard got activated")
 		if (this.userService.isLoggedIn) {
 			return true;
 		}
@@ -22,5 +19,4 @@ export class AuthGuard implements CanActivate {
 		// { queryParams: { returnUrl: state.url } }
 		return true;
 	}
-
 }
