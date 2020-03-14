@@ -13,9 +13,11 @@ export class LoginComponent {
     password: string;
 
     disableForms: boolean;
+    failedLogin: boolean;
 
     constructor(private userService: UserService, private router: Router) {
         this.disableForms = false;
+        this.failedLogin = false;
     }
 
     async login() {
@@ -25,6 +27,7 @@ export class LoginComponent {
         if (this.userService.isLoggedIn) {
             this.router.navigate(["other"]);
         } else {
+            this.failedLogin = true;
             this.email = "";
             this.password = "";
         }

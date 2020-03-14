@@ -6,6 +6,7 @@
         "header": "Please login:",
         "email": "Email",
         "password": "Password",
-        "login": "LOGIN"
+        "login": "LOGIN",
+        "failedLogin": "Wrong credentials"
     }
 }

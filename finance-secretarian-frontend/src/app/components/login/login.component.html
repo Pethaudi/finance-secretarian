@@ -1,10 +1,15 @@
 <div id="body">
     <form #loginForm="ngForm">
         <h2>{{ "login.header" | translate }}</h2>
-        <input type="email" placeholder="{{ 'login.email' | translate }}" name="emailInput" [disabled]="disableForms"
-            [(ngModel)]="email" required autocomplete="email" #emailInput="ngModel">
-        <input type="password" placeholder="{{ 'login.password' | translate }}" name="passwordInput" [disabled]="disableForms"
-            [(ngModel)]="password" required autocomplete="current-password" #passwordInput="ngModel">
+        <input type="email" placeholder="{{ 'login.email' | translate }}"
+            name="emailInput" [disabled]="disableForms" autocomplete="email" 
+            [(ngModel)]="email" required #emailInput="ngModel">
+
+        <input type="password" placeholder="{{ 'login.password' | translate }}"
+            name="passwordInput" [disabled]="disableForms" autocomplete="current-password"
+            [(ngModel)]="password" required #passwordInput="ngModel">
+
         <button [disabled]="loginForm.invalid || disableForms" (click)="login()">{{ "login.login" | translate }}</button>
+        <div id="error" *ngIf="failedLogin">{{ "login.failedLogin" | translate}}</div>
     </form>
 </div>
