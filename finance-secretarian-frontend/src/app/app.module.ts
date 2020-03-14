@@ -8,16 +8,16 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './components/app/app.component';
 import { LoginComponent } from './components/login/login.component';
-import { OtherComponent } from './components/other/other.component';
 import { AuthInterceptor } from './helpers-pipes/auth-interceptor/auth.interceptor';
 import { ErrorInterceptor } from './helpers-pipes/error-interceptor/error.interceptor';
 import { AuthGuard } from './helpers-pipes/auth-guard/auth.guard';
+import { MainComponent } from './components/main/main.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LoginComponent,
-		OtherComponent
+		MainComponent
 	],
 	imports: [
         FormsModule, 

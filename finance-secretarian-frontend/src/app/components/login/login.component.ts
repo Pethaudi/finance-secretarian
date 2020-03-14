@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user-service/user.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'src/app/services/cookie-service/cookie.service';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,9 @@ export class LoginComponent {
     constructor(private userService: UserService, private router: Router) {
         this.disableForms = false;
         this.failedLogin = false;
+        if (this.userService.isLoggedIn) {
+            this.router.navigate(["main"]);
+        }
     }
 
     async login() {
@@ -25,7 +29,7 @@ export class LoginComponent {
         await this.userService.login(this.email, this.password);
 
         if (this.userService.isLoggedIn) {
-            this.router.navigate(["other"]);
+            this.router.navigate(["main"]);
         } else {
             this.failedLogin = true;
             this.email = "";
