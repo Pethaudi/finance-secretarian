@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { CookieService } from '../cookie-service/cookie.service';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class UserService {
 
-	isLoggedIn: boolean;
-
-	private parsedAuthData: string;
+    isLoggedIn: boolean;
+    
+    private parsedAuthData: string;
 	get authData(): string {
-		return this.parsedAuthData;
-	}
+        return this.parsedAuthData;
+    }
 
-	constructor(private http: HttpClient) {
+	constructor(private http: HttpClient, private cookieService: CookieService) {
 		this.isLoggedIn = false;
-		this.parsedAuthData = "";
+        this.parsedAuthData = "";
+        
+        if (this.cookieService.isCookieSet()) {
+            this.parsedAuthData = this.cookieService.getCookie();
+            this.isLoggedIn = true;
+        }
 	}
 
 	login(email: string, password: string): Promise<void> {
@@ -28,12 +34,14 @@ export class UserService {
 			}).subscribe({
 				next: () => {
 					this.isLoggedIn = true;
-					this.parsedAuthData = window.btoa(email + ":" + password);
+                    this.parsedAuthData = window.btoa(email + ":" + password);
+                    this.cookieService.setCookie(this.authData);
 					resolve();
 				},
 				error: () => {
 					this.isLoggedIn = false;
-					this.parsedAuthData = "";
+                    this.parsedAuthData = "";
+                    this.cookieService.deleteCookie();
 					resolve();
 				}
 			});
