@@ -27,6 +27,7 @@ export class LoginComponent {
     async login() {
         this.disableForms = true;
         await this.userService.login(this.email, this.password);
+        this.disableForms = false;
 
         if (this.userService.isLoggedIn) {
             this.router.navigate(["main"]);
