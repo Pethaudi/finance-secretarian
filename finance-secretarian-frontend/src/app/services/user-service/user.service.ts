@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { CookieService } from '../cookie-service/cookie.service';
+import { Router } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root'
@@ -15,10 +16,9 @@ export class UserService {
         return this.parsedAuthData;
     }
 
-	constructor(private http: HttpClient, private cookieService: CookieService) {
+	constructor(private http: HttpClient, private cookieService: CookieService, private router: Router) {
 		this.isLoggedIn = false;
         this.parsedAuthData = "";
-        
         if (this.cookieService.isCookieSet()) {
             this.parsedAuthData = this.cookieService.getCookie();
             this.isLoggedIn = true;
@@ -46,5 +46,12 @@ export class UserService {
 				}
 			});
 		});
-	}
+    }
+    
+    logout() {
+        this.isLoggedIn = false;
+        this.parsedAuthData = "";
+        this.cookieService.deleteCookie();
+        this.router.navigate(["login"])
+    }
 }

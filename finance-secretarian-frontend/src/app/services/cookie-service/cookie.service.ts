@@ -21,6 +21,6 @@ export class CookieService {
     }
 
     deleteCookie() {
-        document.cookie = "val=;expires" + (new Date(Date.now() - 1)).toUTCString();
+        document.cookie = "val=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
 }

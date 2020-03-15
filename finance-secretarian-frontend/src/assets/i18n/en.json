@@ -1,6 +1,7 @@
 {
     "app": {
-        "header": "Finance Secretarian"
+        "header": "Finance Secretarian",
+        "logout": "logout"
     },
     "login": {
         "header": "Please login:",

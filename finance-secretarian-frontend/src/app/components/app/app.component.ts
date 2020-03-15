@@ -11,7 +11,11 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
 	title = 'finance-secretarian-frontend';
 
-	constructor(private translate: TranslateService) {
+	constructor(private translate: TranslateService, public userService: UserService) {
 		this.translate.use("en");
-	}
+    }
+    
+    logout() {
+        this.userService.logout();
+    }
 }
