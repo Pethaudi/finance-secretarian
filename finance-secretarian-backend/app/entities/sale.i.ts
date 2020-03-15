@@ -4,4 +4,5 @@ export interface Sale {
     userId: number;
     amount: number;
     saledate: string;
+    note: string;
 }
