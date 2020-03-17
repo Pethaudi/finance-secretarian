@@ -12,12 +12,14 @@ import { AuthInterceptor } from './helpers-pipes/auth-interceptor/auth.intercept
 import { ErrorInterceptor } from './helpers-pipes/error-interceptor/error.interceptor';
 import { AuthGuard } from './helpers-pipes/auth-guard/auth.guard';
 import { MainComponent } from './components/main/main.component';
+import { MonthlyStatisticsComponent } from './components/monthly-statistics/monthly-statistics.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LoginComponent,
-		MainComponent
+		MainComponent,
+		MonthlyStatisticsComponent
 	],
 	imports: [
         FormsModule, 

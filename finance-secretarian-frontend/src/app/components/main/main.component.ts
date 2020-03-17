@@ -22,8 +22,10 @@ export class MainComponent implements OnInit {
         this.saveSuccessful = true;
         this.initInputSale();
         this.categories = new Array<Category>();
-        this.categories = await this.categoriesService.getCategories();
         this.latestSales = new Array<Sale>();
+        this.categories = await this.categoriesService.getCategories();
+        console.log("categories before getting paper id", this.categories)
+        this.inputSale.categoryId = this.categories.find(category => category.category === "paper").id;
         this.latestSales = await this.salesService.getSales(10);
     }
 
@@ -43,7 +45,7 @@ export class MainComponent implements OnInit {
         if (!this.inputSale.amountSold) {
             this.inputSale.amountSold = 1;
         }
-        
+
         this.saveSuccessful = await this.salesService.createSale(this.inputSale);
         if (this.saveSuccessful) {
             this.initInputSale();
@@ -52,6 +54,6 @@ export class MainComponent implements OnInit {
     }
 
     getCategory(id: number): string {
-        return this.categories.find(category => category.id === id).name;
+        return this.categories.find(category => category.id === id).category;
     }
 }

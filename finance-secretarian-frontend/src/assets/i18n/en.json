@@ -18,5 +18,12 @@
         "note": "Notes",
         "notSaved": "The sale couldn't be saved",
         "what": "What?"
+    },
+    "categories": {
+        "paper": "Paper",
+        "subscription": "Subscription",
+        "brochure": "Brochure",
+        "donation": "Donation",
+        "other": "Other"
     }
 }

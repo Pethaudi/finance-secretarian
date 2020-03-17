@@ -41,4 +41,17 @@ export class SalesUow {
             );
         });
     }
+
+    getSalesPerMonth(month: number): Promise<Sale[]> {
+        const monthNr = month > 12 ? month % 12 === 0 ? 12 : month % 12 : month;
+        const monthStr = monthNr > 9 ? monthNr.toString() : "0" + monthNr;
+        return new Promise<Sale[]>(async (resolve) => {
+            resolve(
+                await this.db.execute<Sale[]>(
+                    "select * from sales where strftime('%m', saledate) = ? order by date(saledate) desc",
+                    monthStr
+                )
+            );
+        });
+    }
 }

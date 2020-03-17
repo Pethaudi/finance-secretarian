@@ -25,6 +25,12 @@ SalesRouter.get("/:number", async (req: Request, res: Response) => {
     res.send(await SalesUow.Instance.getLatestNSales(Number.parseInt(req.params.number)));
 })
 
+SalesRouter.get("/per-month/:month", async (req: Request, res: Response) => {
+    res.setHeader("Content-Type", "application/json");
+    res.status(200);
+    res.send(await SalesUow.Instance.getSalesPerMonth(Number.parseInt(req.params.month)));
+})
+
 /**
  * creates a new sale
  */

@@ -4,15 +4,16 @@
             <select name="categoryId" [(ngModel)]="inputSale.categoryId">
                 <option *ngFor="let category of categories"
                     [value]="category.id">
-                    {{category.name}}
+                    {{ "categories." + category.category | translate }}
                 </option>
             </select>
             <input type="number" placeholder="{{ 'main.amountSold' | translate }}"
                 name="amountSold" [(ngModel)]="inputSale.amountSold">
             <input type="number" placeholder="{{ 'main.amountMoney' | translate }}"
                 name="amountMoney" [(ngModel)]="inputSale.amountMoney" required>
-            <input type="date" placeholder="{{ 'main.soldAt' | translate }}"
-                name="saledate" [ngModel]="inputSale.saledate | date:'yyyy-MM-dd'" required>
+            <input type="datetime" placeholder="{{ 'main.soldAt' | translate }}"
+                name="saledate" [ngModel]="inputSale.saledate | date:'yyyy-MM-dd HH:mm'"
+                (ngModelChange)="inputSale.saledate = $event" required>
             <input type="text" placeholder="{{ 'main.note' | translate }}"
                 name="note" [(ngModel)]="inputSale.note">
         </form>

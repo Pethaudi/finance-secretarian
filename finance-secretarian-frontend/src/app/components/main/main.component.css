@@ -57,7 +57,7 @@ input, select {
 #display-latest-sales thead td {
     border-bottom: 0.1rem solid var(--primary);
     font-weight: bold;
-    color: var(--secondary);
+    color: var(--primary);
 }
 
 #display-latest-sales tbody tr:nth-child(2n) {

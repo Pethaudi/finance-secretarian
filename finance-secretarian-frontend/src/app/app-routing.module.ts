@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './helpers-pipes/auth-guard/auth.guard';
 import { MainComponent } from './components/main/main.component';
+import { MonthlyStatisticsComponent } from './components/monthly-statistics/monthly-statistics.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,15 @@ const routes: Routes = [
 		path: "main",
         component: MainComponent,
         canActivate: [AuthGuard]
-	}
+	}, {
+        path: "monthly-statistics/:month",
+        component: MonthlyStatisticsComponent,
+        canActivate: [AuthGuard]
+    }, {
+        path: "monthly-statistics",
+        pathMatch: "full",
+        redirectTo: "monthly-statistics/" + (new Date(Date.now())).getMonth()
+    }
 ];
 
 @NgModule({
