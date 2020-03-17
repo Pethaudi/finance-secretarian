@@ -24,12 +24,13 @@ CREATE TABLE SALES (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     categoryId INTEGER NOT NULL,
     userId INTEGER NOT NULL,
-    amount FLOAT NOT NULL,
+    amountSold INTEGER NOT NULL,
+    amountMoney FLOAT NOT NULL,
     saledate DATE NOT NULL,
     note VARCHAR(255),
     FOREIGN KEY (categoryId) REFERENCES CATEGORIES(id),
     FOREIGN KEY (userId) REFERENCES USERS(id)
 );
 
-INSERT INTO SALES (categoryId, userId, amount, saledate, note)
-    VALUES (1, 1, 5.4, '2020-03-05', 'this is a note');
+INSERT INTO SALES (categoryId, userId, amountSold, amountMoney, saledate, note)
+    VALUES (1, 1, 3, 5.4, '2020-03-05', 'this is a note');

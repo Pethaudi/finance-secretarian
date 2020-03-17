@@ -19,5 +19,19 @@ export class SalesService {
 					}
 				});
 		});
-	}
+    }
+    
+    createSale(sale: Sale): Promise<boolean> {
+        return new Promise<boolean>(resolve => {
+            this.http.post(environment.apiUrl + "sales", sale)
+                .subscribe({
+                    next: () => {
+                        resolve(true);
+                    },
+                    error: () => {
+                        resolve(false);
+                    }
+                })
+        })
+    }
 }

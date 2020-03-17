@@ -1,3 +1,26 @@
 <div id="body">
-    
+    <div id="enter-sale">
+        <form id="inputs" #inputForm="ngForm">
+            <select name="categoryId" [(ngModel)]="inputSale.categoryId">
+                <option *ngFor="let category of categories"
+                    [value]="category.id">
+                    {{category.name}}
+                </option>
+            </select>
+            <input type="number" placeholder="{{ 'main.amountSold' | translate }}"
+                name="amountSold" [(ngModel)]="inputSale.amountSold">
+            <input type="number" placeholder="{{ 'main.amountMoney' | translate }}"
+                name="amountMoney" [(ngModel)]="inputSale.amountMoney" required>
+            <input type="date" placeholder="{{ 'main.soldAt' | translate }}"
+                name="saledate" [ngModel]="inputSale.saledate | date:'yyyy-MM-dd'" required>
+            <input type="text" placeholder="{{ 'main.note' | translate }}"
+                name="note" [(ngModel)]="inputSale.note">
+        </form>
+        <div id="submit-container">
+            <div id="center">
+                <button id="submit" [disabled]="inputForm.invalid" (click)="saveNewSale()">Submit</button>
+                <div id="error-text" *ngIf="!saveSuccessful">{{ "main.notSaved" | translate }}</div>
+            </div>
+        </div>
+    </div>
 </div>

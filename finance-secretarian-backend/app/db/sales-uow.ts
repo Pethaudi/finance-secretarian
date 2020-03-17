@@ -22,4 +22,15 @@ export class SalesUow {
             resolve(await this.db.execute<Sale[]>("select * from sales where userId = ?", userId));
         });
     }
+
+    createSale(sale: Sale): Promise<boolean> {
+        return new Promise<boolean>(async (resolve) => {
+            resolve(
+                this.db.insert<boolean>(
+                    "insert into sales(categoryId, userId, amountSold, amountMoney, saledate, note) values (?, ?, ?, ?, ?, ?)",
+                    sale.categoryId, sale.userId, sale.amountSold, sale.amountMoney, sale.saledate, sale.note
+                )
+            )
+        });
+    }
 }

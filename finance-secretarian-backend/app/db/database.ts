@@ -27,4 +27,20 @@ export class Database {
             }
         )
     }
+
+    /**
+     * executes a given query with the given params and returns the success
+     */
+    insert<T>(query: string, ...params: any): Promise<boolean> {
+        return new Promise(
+            resolve => {
+                this.db.run(query, ...params, (err: any) => {
+                    if (err) {
+                        throw resolve(false);
+                    }
+                    resolve(true);
+                })
+            }
+        )
+    }
 }

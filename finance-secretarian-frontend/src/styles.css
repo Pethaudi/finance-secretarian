@@ -24,15 +24,15 @@ body, h1, h2 {
     font-family: Ubuntu, "sans-serif";
 }
 
-input {
+input, select {
     background: none;
     border: none;
     border-bottom: 0.1rem solid var(--background-dark);
-    font-size: 1.5em;
+    font-size: 1em;
     outline: none;
 }
 
-input:focus {
+input:focus, select:focus {
     border-bottom-color: var(--primary);
 }
 
@@ -41,7 +41,7 @@ button {
     color: var(--background-light);
     border: none;
     border-radius: var(--radius);
-    font-size: 1.5em;
+    font-size: 1em;
     min-width: 5em;
     cursor: pointer;
     outline: none;
@@ -51,4 +51,8 @@ button:hover {
     background: var(--background-light);
     color: var(--primary);
     border: 0.1rem solid var(--primary);
+}
+
+button:disabled {
+    cursor: default;
 }

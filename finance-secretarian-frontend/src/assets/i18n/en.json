@@ -9,5 +9,13 @@
         "password": "Password",
         "login": "LOGIN",
         "failedLogin": "Wrong credentials"
+    },
+    "main": {
+        "category": "Category",
+        "amountMoney": "Money",
+        "amountSold": "Sold",
+        "soldAt": "date",
+        "note": "Notes",
+        "notSaved": "The sale couldn't be saved"
     }
 }
