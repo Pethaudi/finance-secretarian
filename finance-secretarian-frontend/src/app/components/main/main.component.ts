@@ -14,13 +14,17 @@ export class MainComponent implements OnInit {
     inputSale: Sale;
     categories: Category[]
     saveSuccessful: boolean;
+    latestSales: Sale[];
 
     constructor(private salesService: SalesService, private categoriesService: CategoriesService) {}
 
     async ngOnInit(): Promise<void> {
         this.saveSuccessful = true;
         this.initInputSale();
+        this.categories = new Array<Category>();
         this.categories = await this.categoriesService.getCategories();
+        this.latestSales = new Array<Sale>();
+        this.latestSales = await this.salesService.getSales(10);
     }
 
     initInputSale() {
@@ -28,7 +32,7 @@ export class MainComponent implements OnInit {
             id: null,
             categoryId: 1,
             userId: null,
-            amountSold: 1,
+            amountSold: null,
             amountMoney: null,
             saledate: new Date(Date.now()),
             note: null
@@ -36,7 +40,18 @@ export class MainComponent implements OnInit {
     }
 
     async saveNewSale() {
-        this.inputSale.categoryId = 1;
+        if (!this.inputSale.amountSold) {
+            this.inputSale.amountSold = 1;
+        }
+        
         this.saveSuccessful = await this.salesService.createSale(this.inputSale);
+        if (this.saveSuccessful) {
+            this.initInputSale();
+            this.latestSales = await this.salesService.getSales(10);
+        }
+    }
+
+    getCategory(id: number): string {
+        return this.categories.find(category => category.id === id).name;
     }
 }

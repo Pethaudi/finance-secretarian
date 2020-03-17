@@ -4,6 +4,7 @@
     --background-dark: rgba(51, 51, 51, 1);
     --background-light: rgba(251, 251, 251, 1);
     --primary: rgba(92, 128, 188, 1);
+    --primary-reduced-opacity: rgba(92, 128, 188, 0.2);
     --secondary: rgba(70, 129, 137, 1);
     --contrary: rgba(148, 27, 12, 1);
     --text: var(--background-dark);
@@ -41,7 +42,7 @@ button {
     color: var(--background-light);
     border: none;
     border-radius: var(--radius);
-    font-size: 1em;
+    font-size: 1.5em;
     min-width: 5em;
     cursor: pointer;
     outline: none;

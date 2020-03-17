@@ -12,14 +12,6 @@
     flex-wrap: nowrap;
 }
 
-/*#submit-container {
-    height: fit-content;
-    width: fit-content;
-    position: relative;
-    top: 50%;
-    transform: translate(0, -50%);
-}*/
-
 #center {
     height: fit-content;
     width: fit-content;
@@ -42,7 +34,6 @@
 
 #inputs {
     position: relative;
-    /* width: calc(100% - 2 * var(--margin)); */
     width: fit-content;
     justify-content: space-evenly;
     display: flex;
@@ -53,6 +44,24 @@
 input, select {
     flex-grow: 1;
     margin: var(--margin);
+}
+
+#display-latest-sales {
+    margin-top: var(--margin);
+}
+
+#display-latest-sales > table {
+    width: calc(100% - 2 * var(--margin));
+}
+
+#display-latest-sales thead td {
+    border-bottom: 0.1rem solid var(--primary);
+    font-weight: bold;
+    color: var(--secondary);
+}
+
+#display-latest-sales tbody tr:nth-child(2n) {
+    background: var(--primary-reduced-opacity);
 }
 
 @media screen and (max-width: 768px) {

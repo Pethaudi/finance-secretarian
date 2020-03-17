@@ -23,4 +23,23 @@
             </div>
         </div>
     </div>
+
+    <div id="display-latest-sales">
+        <table>
+            <thead>
+                <td>{{ "main.what" | translate }}</td>
+                <td>{{ "main.soldAt" | translate }}</td>
+                <td>{{ "main.amountSold" | translate }}</td>
+                <td>{{ "main.amountMoney" | translate }}</td>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sale of latestSales">
+                    <td>{{ getCategory(sale.categoryId) }}</td>
+                    <td>{{ sale.saledate | date: "dd/MM/yyyy HH:mm"}}</td>
+                    <td>{{ sale.amountSold }}</td>
+                    <td>{{ sale.amountMoney }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

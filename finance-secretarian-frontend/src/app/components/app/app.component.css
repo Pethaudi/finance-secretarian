@@ -51,11 +51,12 @@
 
 #logout {
     position: absolute;
-    bottom: 0;
+    top: 50%;
     right: var(--margin);
     height: fit-content;
     color: var(--primary);
     cursor: pointer;
+    transform: translate(0, -50%);
 }
 
 #footer {

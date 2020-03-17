@@ -2,11 +2,12 @@
     <div id="header">
         <div id="container">
             <div id="heading">{{ "app.header" | translate }}</div>
-            <div id="logout" *ngIf="userService.isLoggedIn" (click)="logout()">{{ "app.logout" | translate }}</div>
         </div>
     </div>
     <div id="content">
         <router-outlet></router-outlet>
     </div>
-    <div id="footer"></div>
+    <div id="footer">
+        <div id="logout" *ngIf="userService.isLoggedIn" (click)="logout()">{{ "app.logout" | translate }}</div>
+    </div>
 </div>

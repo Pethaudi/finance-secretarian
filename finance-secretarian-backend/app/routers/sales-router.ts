@@ -19,6 +19,15 @@ SalesRouter.get("/", async (req: Request, res: Response) => {
 	res.send((await SalesUow.Instance.getSales(req.userId!!)));
 });
 
+SalesRouter.get("/:number", async (req: Request, res: Response) => {
+    res.setHeader("Content-Type", "application/json");
+    res.status(200);
+    res.send(await SalesUow.Instance.getLatestNSales(Number.parseInt(req.params.number)));
+})
+
+/**
+ * creates a new sale
+ */
 SalesRouter.post("/", async (req: Request, res: Response) => {
     const sale: Sale = req.body;
     sale.userId = req.userId!!;
@@ -26,8 +35,6 @@ SalesRouter.post("/", async (req: Request, res: Response) => {
     if (!sale.amountSold) {
         sale.amountSold = 1;
     }
-
-    console.log(sale);
 
     if (await SalesUow.Instance.createSale(sale)) {
         res.status(201);

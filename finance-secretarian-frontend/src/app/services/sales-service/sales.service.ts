@@ -10,9 +10,9 @@ export class SalesService {
 
 	constructor(private http: HttpClient) { }
 
-	getSales(): Promise<Sale[]> {
+	getSales(number?: number): Promise<Sale[]> {
 		return new Promise<Sale[]>(resolve => {
-			this.http.get<Sale[]>(environment.apiUrl + "sales")
+            this.http.get<Sale[]>(environment.apiUrl + "sales/" + (number ?? ""))
 				.subscribe({
 					next: data => {
 						resolve(data);

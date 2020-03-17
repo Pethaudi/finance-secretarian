@@ -12,10 +12,11 @@
     },
     "main": {
         "category": "Category",
-        "amountMoney": "Money",
-        "amountSold": "Sold",
-        "soldAt": "date",
+        "amountMoney": "Sold for",
+        "amountSold": "Quantity",
+        "soldAt": "Date",
         "note": "Notes",
-        "notSaved": "The sale couldn't be saved"
+        "notSaved": "The sale couldn't be saved",
+        "what": "What?"
     }
 }

@@ -33,4 +33,12 @@ export class SalesUow {
             )
         });
     }
+
+    getLatestNSales(n: number): Promise<Sale[]> {
+        return new Promise<Sale[]>(async (resolve) => {
+            resolve(
+                await this.db.execute<Sale[]>("select * from sales order by date(saledate) desc limit ?", n)
+            );
+        });
+    }
 }
