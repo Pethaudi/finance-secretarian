@@ -1,7 +1,8 @@
 {
     "general": {
         "yes": "yes",
-        "no": "no"
+        "no": "no",
+        "back": "Back"
     },
     "app": {
         "header": "Finance Secretarian",
@@ -39,6 +40,8 @@
         "bestSellAmount": "Best sell amount:",
         "bestSellRevenue": "Best sell revenue:",
         "summation": "Summation:",
-        "retained": "Retained:"
+        "retained": "Retained:",
+        "next": "Next",
+        "previous": "Previous"
     }
 }

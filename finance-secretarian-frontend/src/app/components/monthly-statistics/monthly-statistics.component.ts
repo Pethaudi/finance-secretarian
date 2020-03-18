@@ -23,7 +23,8 @@ export class MonthlyStatisticsComponent implements OnInit {
     brochures: Sale[];
     categories: Category[];
     
-    constructor(private saleService: SalesService, private route: ActivatedRoute, private categoryService: CategoriesService) {
+    constructor(private saleService: SalesService, private route: ActivatedRoute,
+        private categoryService: CategoriesService, private router: Router) {
         this.sales = new Array<Sale>();
         this.subscriptions = new Array<Sale>();
         this.donations = new Array<Sale>();
@@ -52,8 +53,7 @@ export class MonthlyStatisticsComponent implements OnInit {
     }
 
     async ngOnInit() {
-        this.month = this.route.snapshot.params["month"];
-        this.year = this.route.snapshot.params["year"];
+        await this.getParams();
         this.sales = await this.saleService.getSalesPerPeriod(this.month, this.year);
         this.categories = await this.categoryService.getCategories();
         this.subscriptions = this.sales.filter(sale => sale.categoryId === this.categories.find(category => category.category === "subscription").id);
@@ -89,6 +89,18 @@ export class MonthlyStatisticsComponent implements OnInit {
         }
     }
 
+    getParams(): Promise<void> {
+        return new Promise<void>(async resolve => {
+            this.route.paramMap.subscribe(
+                params => {
+                    this.month = +params.get("month");
+                    this.year = +params.get("year");
+                    resolve();
+                }
+            );
+        })
+    }
+
     getAmount(sales: Sale[]): number {
         if (sales.length === 0) {
             return 0;
@@ -101,5 +113,29 @@ export class MonthlyStatisticsComponent implements OnInit {
             return 0;
         }
         return sales.map(sale => sale.revenue).reduce((prev, cur) => prev + cur);
+    }
+
+    generateLink(next: boolean) {
+        let link = "/monthly-statistics/";
+
+        if (next) {
+            if (this.month + 1 === 13) {
+                this.year++;
+                this.month = 1;
+            } else {
+                this.month++;
+            }
+        } else {
+            if (this.month - 1 === 0) {
+                this.year--;
+                this.month = 12;
+            } else {
+                this.month--;
+            }
+        }
+        link += this.month + "/" + this.year;
+
+        this.router.navigateByUrl(link);
+        this.ngOnInit();
     }
 }

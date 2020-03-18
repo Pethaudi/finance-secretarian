@@ -1,4 +1,11 @@
 <div id="body">
+    <div class="navigation">
+        <button class="button" id="back" routerLink="/main">{{ "general.back" | translate }}</button>
+        <div class="center">
+            <button class="button" id="previous" (click)="generateLink(false)">{{ "monthly-statistics.previous" | translate }}</button>
+            <button class="button" id="next" (click)="generateLink(true)">{{ "monthly-statistics.next" | translate }}</button>
+        </div>
+    </div>
     <div class="info-container">
         <div class="header">{{ "categories.paper" | translate }}</div>
         <div class="text">{{ "monthly-statistics.bestSellAmount" | translate }}<div class="fat">{{ papers[0].amountSold }}</div></div>

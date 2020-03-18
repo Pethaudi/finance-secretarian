@@ -73,6 +73,28 @@
     top: 0;
 }
 
+.navigation {
+    position: relative;
+    width: 100%;
+}
+
+#back {
+    position: relative;
+    margin-top: var(--margin);
+    margin-left: var(--margin);
+}
+
+.center {
+    position: absolute;
+    right: var(--margin);
+    top: var(--margin);
+}
+
+#previous {
+    position: relative;
+    right: var(--margin);
+}
+
 
 @media screen and (max-width: 992px) {
     .text {
