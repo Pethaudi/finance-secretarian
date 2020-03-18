@@ -65,8 +65,14 @@
     top: 50%;
     left: var(--margin);
     height: fit-content;
-    color: var(--primary);
     transform: translate(0, -50%);
+}
+
+#contact-info > p,a {
+    margin-top: var(--margin);
+    margin-bottom: 0;
+    margin-left: 0;
+    color: var(--primary);
 }
 
 #footer {

@@ -9,6 +9,9 @@
     </div>
     <div id="footer">
         <div id="logout" *ngIf="userService.isLoggedIn" (click)="logout()">{{ "app.logout" | translate }}</div>
-        <div id="contact-info">{{ "app.contact" | translate }}</div>
+        <div id="contact-info">
+            <p>{{ "app.contact" | translate }}</p>
+            <a href="https://github.com/Pethaudi/finance-secretarian">Github</a>
+        </div>
     </div>
 </div>

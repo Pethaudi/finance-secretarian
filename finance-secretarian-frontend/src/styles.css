@@ -73,3 +73,9 @@ input:focus, select:focus {
     background-color: var(--background-light);
     color: var(--contrary);
 }
+
+@media screen and (max-width: 768px) {
+    .error-button, .button {
+        min-width: 2.5rem;
+    }
+}
