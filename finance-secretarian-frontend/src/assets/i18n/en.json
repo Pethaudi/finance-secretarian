@@ -5,7 +5,8 @@
     },
     "app": {
         "header": "Finance Secretarian",
-        "logout": "logout"
+        "logout": "logout",
+        "contact": "contact: pethaudi@yahoo.de"
     },
     "login": {
         "header": "Please login:",
@@ -22,7 +23,8 @@
         "note": "Notes",
         "notSaved": "The sale couldn't be saved",
         "what": "What?",
-        "tooltip": "Do you really want delete this sale?"
+        "tooltip": "Do you really want delete this sale?",
+        "monthly": "Monthly statistics"
     },
     "categories": {
         "paper": "Paper",

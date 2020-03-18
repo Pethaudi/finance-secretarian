@@ -57,6 +57,16 @@
     color: var(--primary);
     cursor: pointer;
     transform: translate(0, -50%);
+    border-bottom: 0.1rem solid var(--primary);
+}
+
+#contact-info {
+    position: absolute;
+    top: 50%;
+    left: var(--margin);
+    height: fit-content;
+    color: var(--primary);
+    transform: translate(0, -50%);
 }
 
 #footer {

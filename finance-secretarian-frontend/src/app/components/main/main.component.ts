@@ -29,7 +29,7 @@ export class MainComponent implements OnInit {
         this.latestSales = new Array<Sale>();
         this.categories = await this.categoriesService.getCategories();
         this.inputSale.categoryId = this.categories.find(category => category.category === "paper").id;
-        this.latestSales = await this.salesService.getSales(10);
+        this.latestSales = await this.salesService.getSales(100);
     }
 
     initInputSale() {
@@ -52,7 +52,7 @@ export class MainComponent implements OnInit {
         this.saveSuccessful = await this.salesService.createSale(this.inputSale);
         if (this.saveSuccessful) {
             this.initInputSale();
-            this.latestSales = await this.salesService.getSales(10);
+            this.latestSales = await this.salesService.getSales(100);
         }
     }
 
