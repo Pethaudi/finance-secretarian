@@ -27,8 +27,8 @@ export class SalesUow {
         return new Promise<boolean>(async (resolve) => {
             resolve(
                 this.db.execute<boolean>(
-                    "insert into sales(categoryId, userId, amountSold, amountMoney, saledate, note) values (?, ?, ?, ?, ?, ?)",
-                    sale.categoryId, sale.userId, sale.amountSold, sale.amountMoney, sale.saledate, sale.note
+                    "insert into sales(categoryId, userId, amountSold, revenue, saledate, note) values (?, ?, ?, ?, ?, ?)",
+                    sale.categoryId, sale.userId, sale.amountSold, sale.revenue, sale.saledate, sale.note
                 )
             )
         });

@@ -9,8 +9,8 @@
             </select>
             <input type="number" placeholder="{{ 'main.amountSold' | translate }}"
                 name="amountSold" [(ngModel)]="inputSale.amountSold">
-            <input type="number" placeholder="{{ 'main.amountMoney' | translate }}"
-                name="amountMoney" [(ngModel)]="inputSale.amountMoney" required>
+            <input type="number" placeholder="{{ 'main.revenue' | translate }}"
+                name="revenue" [(ngModel)]="inputSale.revenue" required>
             <input type="date" placeholder="{{ 'main.soldAt' | translate }}"
                 name="saledate" [ngModel]="inputSale.saledate | date:'yyyy-MM-dd'"
                 (ngModelChange)="inputSale.saledate = $event" required>
@@ -30,7 +30,7 @@
             <thead>
                 <td>{{ "main.what" | translate }}</td>
                 <td>{{ "main.amountSold" | translate }}</td>
-                <td>{{ "main.amountMoney" | translate }}</td>
+                <td>{{ "main.revenue" | translate }}</td>
                 <td>{{ "main.soldAt" | translate }}</td>
                 <td class="hide-on-small-screen">{{ "main.note" | translate }}</td>
                 <td class="delete-row"></td>
@@ -39,7 +39,7 @@
                 <tr *ngFor="let sale of latestSales">
                     <td>{{ getCategory(sale.categoryId) }}</td>
                     <td>{{ sale.amountSold }}</td>
-                    <td>{{ sale.amountMoney }}</td>
+                    <td>{{ sale.revenue }}</td>
                     <td>{{ sale.saledate | date: "dd/MM/yyyy"}}</td>
                     <td class="hide-on-small-screen">{{ sale.note ? sale.note : "-" }}</td>
                     <td class="delete-row">

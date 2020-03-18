@@ -17,7 +17,7 @@
     },
     "main": {
         "category": "Category",
-        "amountMoney": "Sold for",
+        "revenue": "Revenue",
         "amountSold": "Quantity",
         "soldAt": "Date",
         "note": "Notes",

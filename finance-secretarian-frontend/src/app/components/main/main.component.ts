@@ -38,7 +38,7 @@ export class MainComponent implements OnInit {
             categoryId: 1,
             userId: null,
             amountSold: null,
-            amountMoney: null,
+            revenue: null,
             saledate: new Date(Date.now()),
             note: null
         };

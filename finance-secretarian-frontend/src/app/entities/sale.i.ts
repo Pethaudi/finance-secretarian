@@ -3,7 +3,7 @@ export interface Sale {
     categoryId: number;
     userId: number;
     amountSold: number;
-    amountMoney: number;
+    revenue: number;
     saledate: string | Date;
     note: string;
 }
