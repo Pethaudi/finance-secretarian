@@ -1,5 +1,6 @@
 import express from "express";
 import helmet from "helmet";
+import compression from "compression";
 import * as bodyParser from "body-parser";
 
 import { LoginRouter } from "./app/routers/login-router";
@@ -9,6 +10,7 @@ import { CategoriesRouter } from "./app/routers/categories-router";
 const port = 5500;
 const app = express();
 
+app.use(compression())
 app.use(helmet())
 app.use(bodyParser.json());
 
