@@ -48,4 +48,15 @@ export class SalesService {
                 });
         });
     }
+
+    getSalesPerPeriod(month: number, year: number): Promise<Sale[]> {
+        return new Promise(resolve => {
+            this.http.get<Sale[]>(environment.apiUrl + `sales/${month}/${year}`)
+                .subscribe({
+                    next: data => {
+                        resolve(data);
+                    }
+                });
+        });
+    }
 }

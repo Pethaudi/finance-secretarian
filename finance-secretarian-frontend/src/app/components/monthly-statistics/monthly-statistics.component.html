@@ -1,1 +1,46 @@
-<p>monthly-statistics works!</p>
+<div id="body">
+    <div class="info-container">
+        <div class="header">{{ "categories.paper" | translate }}</div>
+        <div class="text">{{ "monthly-statistics.bestSellAmount" | translate }}<div class="fat">{{ papers[0].amountSold }}</div></div>
+        <div class="text">{{ "monthly-statistics.bestSellRevenue" | translate }}<div class="fat">{{ papers[0].revenue }}</div></div>
+        <div class="text sum">{{ "monthly-statistics.amount" | translate }}<div class="fat">{{ getAmount(papers) }}</div></div>
+        <div class="text sum">{{ "monthly-statistics.revenue" | translate }}<div class="fat">{{ getTotalRevenue(papers) }}</div></div>
+    </div>
+    <div class="info-container">
+        <div class="header">{{ "categories.brochure" | translate }}</div>
+        <div class="text">{{ "monthly-statistics.bestSellAmount" | translate }}<div class="fat">{{ brochures[0].amountSold }}</div></div>
+        <div class="text">{{ "monthly-statistics.bestSellRevenue" | translate }}<div class="fat">{{ brochures[0].revenue }}</div></div>
+        <div class="text sum">{{ "monthly-statistics.amount" | translate }}<div class="fat">{{ getAmount(brochures) }}</div></div>
+        <div class="text sum">{{ "monthly-statistics.revenue" | translate }}<div class="fat">{{ getTotalRevenue(brochures) }}</div></div>
+    </div>
+    <div class="info-container">
+        <div class="header">{{ "categories.subscription" | translate }}</div>
+        <div class="entry" *ngFor="let sub of subscriptions">{{ sub.note }}<div class="fat">{{ sub.revenue }}</div></div>
+        <div class="summation">
+            <div class="text sum">{{ "monthly-statistics.amount" | translate }}<div class="fat">{{ getAmount(subscriptions) }}</div></div>
+            <div class="text sum">{{ "monthly-statistics.revenue" | translate }}<div class="fat">{{ getTotalRevenue(subscriptions) }}</div></div>
+        </div>
+    </div>
+    <div class="info-container">
+        <div class="header">{{ "categories.donation" | translate }}</div>
+        <div class="entry" *ngFor="let don of donations">{{ don.note }}<div class="fat">{{ don.revenue }}</div></div>
+        <div class="summation">
+            <div class="text sum">{{ "monthly-statistics.amount" | translate }}<div class="fat">{{ getAmount(donations) }}</div></div>
+            <div class="text sum">{{ "monthly-statistics.revenue" | translate }}<div class="fat">{{ getTotalRevenue(donations) }}</div></div>
+        </div>
+    </div>
+    <div class="info-container">
+        <div class="header">{{ "categories.other" | translate }}</div>
+        <div class="entry" *ngFor="let oth of others">{{ oth.note }}<div class="fat">{{ oth.revenue }}</div></div>
+        <div class="summation">
+            <div class="text sum">{{ "monthly-statistics.amount" | translate }}<div class="fat">{{ getAmount(others) }}</div></div>
+            <div class="text sum">{{ "monthly-statistics.revenue" | translate }}<div class="fat">{{ getTotalRevenue(others) }}</div></div>
+        </div>
+    </div>
+
+    <div class="splitter"></div>
+
+    <div class="info-container">
+        <div class="header entry">{{ "monthly-statistics.summation" | translate }}<div class="fat">{{ getTotalRevenue(sales) }}</div></div>
+    </div>
+</div>

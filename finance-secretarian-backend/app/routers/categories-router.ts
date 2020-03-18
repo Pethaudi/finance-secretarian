@@ -1,12 +1,13 @@
 import { Response, Request } from "express";
-import { UserUow } from "../db/user-uow";
 import * as express from "express";
 import cors from "cors";
 import { CategoriesUow } from "../db/categories-uow";
+import authorizationMiddleware from "../middlewares/authorization-middleware";
 
 const CategoriesRouter = express.Router();
 
 CategoriesRouter.use(cors());
+CategoriesRouter.use(authorizationMiddleware)
 
 CategoriesRouter.get("/", async (req: Request, res: Response) => {
 	res.setHeader("Content-Type", "application/json");

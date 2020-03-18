@@ -8,7 +8,7 @@ import { Sale } from "../entities/sale.i";
 const SalesRouter = express.Router();
 
 SalesRouter.use(cors());
-SalesRouter.use( Authorization);
+SalesRouter.use(Authorization);
 
 /**
  * returns all sales of the user passed by the authenticator
@@ -25,10 +25,10 @@ SalesRouter.get("/:number", async (req: Request, res: Response) => {
     res.send(await SalesUow.Instance.getLatestNSales(Number.parseInt(req.params.number)));
 })
 
-SalesRouter.get("/per-month/:month", async (req: Request, res: Response) => {
+SalesRouter.get("/:month/:year", async (req: Request, res: Response) => {
     res.setHeader("Content-Type", "application/json");
     res.status(200);
-    res.send(await SalesUow.Instance.getSalesPerMonth(Number.parseInt(req.params.month)));
+    res.send(await SalesUow.Instance.getSalesPerPeriod(Number.parseInt(req.params.month), Number.parseInt(req.params.year)));
 })
 
 /**

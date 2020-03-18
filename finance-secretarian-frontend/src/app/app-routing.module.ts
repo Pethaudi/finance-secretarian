@@ -19,13 +19,13 @@ const routes: Routes = [
         component: MainComponent,
         canActivate: [AuthGuard]
 	}, {
-        path: "monthly-statistics/:month",
+        path: "monthly-statistics/:month/:year",
         component: MonthlyStatisticsComponent,
         canActivate: [AuthGuard]
     }, {
         path: "monthly-statistics",
         pathMatch: "full",
-        redirectTo: "monthly-statistics/" + (new Date(Date.now())).getMonth()
+        redirectTo: "monthly-statistics/" + ((new Date(Date.now())).getMonth() + 1) + "/" + (new Date(Date.now())).getFullYear()
     }
 ];
 

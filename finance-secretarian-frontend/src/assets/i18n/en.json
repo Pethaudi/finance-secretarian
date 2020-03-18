@@ -32,5 +32,13 @@
         "brochure": "Brochure",
         "donation": "Donation",
         "other": "Other"
+    },
+    "monthly-statistics": {
+        "amount": "Amount:",
+        "revenue": "Revenue:",
+        "bestSellAmount": "Best sell amount:",
+        "bestSellRevenue": "Best sell revenue:",
+        "summation": "Summation:",
+        "retained": "Retained:"
     }
 }
