@@ -51,4 +51,13 @@ SalesRouter.post("/", async (req: Request, res: Response) => {
     res.send();
 })
 
+SalesRouter.delete("/:id", async (req: Request, res: Response) => {
+    if (await SalesUow.Instance.deleteSale(Number.parseInt(req.params.id))) {
+        res.status(200);
+    } else {
+        res.status(500);
+    }
+    res.send();
+});
+
 export { SalesRouter };

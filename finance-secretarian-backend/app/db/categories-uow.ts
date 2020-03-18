@@ -15,7 +15,7 @@ export class CategoriesUow {
     getCategories(): Promise<Category[]> {
         return new Promise<Category[]>(
             async resolve => {
-                resolve(await this.db.execute<Category[]>("select * from categories"));
+                resolve(await this.db.fetch<Category[]>("select * from categories"));
             }
         )
     }

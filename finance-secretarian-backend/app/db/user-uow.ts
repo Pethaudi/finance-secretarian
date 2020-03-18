@@ -19,7 +19,7 @@ export class UserUow {
 	 * @param password password of the user
 	 */
 	async getUserId(email: string, password: string): Promise<number | null> {
-		const result = await this.db.execute<User[]>("SELECT * FROM USERS WHERE email = ? AND password = ?", email, password);
+		const result = await this.db.fetch<User[]>("SELECT * FROM USERS WHERE email = ? AND password = ?", email, password);
 		return result.length > 0 ? result[0].id : null;
 	}
 }

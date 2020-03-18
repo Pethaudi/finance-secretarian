@@ -9,7 +9,7 @@
             name="passwordInput" [disabled]="disableForms" autocomplete="current-password"
             [(ngModel)]="password" required #passwordInput="ngModel">
 
-        <button [disabled]="loginForm.invalid || disableForms" (click)="login()">{{ "login.login" | translate }}</button>
+        <button class="button" [disabled]="loginForm.invalid || disableForms" (click)="login()">{{ "login.login" | translate }}</button>
         <div id="error" *ngIf="failedLogin">{{ "login.failedLogin" | translate}}</div>
     </form>
 </div>

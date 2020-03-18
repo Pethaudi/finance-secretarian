@@ -19,14 +19,14 @@ export class SalesUow {
      */
     getSales(userId: number): Promise<Sale[] | null> {
         return new Promise<Sale[] | null>(async (resolve) => {
-            resolve(await this.db.execute<Sale[]>("select * from sales where userId = ?", userId));
+            resolve(await this.db.fetch<Sale[]>("select * from sales where userId = ?", userId));
         });
     }
 
     createSale(sale: Sale): Promise<boolean> {
         return new Promise<boolean>(async (resolve) => {
             resolve(
-                this.db.insert<boolean>(
+                this.db.execute<boolean>(
                     "insert into sales(categoryId, userId, amountSold, amountMoney, saledate, note) values (?, ?, ?, ?, ?, ?)",
                     sale.categoryId, sale.userId, sale.amountSold, sale.amountMoney, sale.saledate, sale.note
                 )
@@ -37,7 +37,7 @@ export class SalesUow {
     getLatestNSales(n: number): Promise<Sale[]> {
         return new Promise<Sale[]>(async (resolve) => {
             resolve(
-                await this.db.execute<Sale[]>("select * from sales order by date(saledate) desc limit ?", n)
+                await this.db.fetch<Sale[]>("select * from sales order by date(saledate) desc limit ?", n)
             );
         });
     }
@@ -47,11 +47,17 @@ export class SalesUow {
         const monthStr = monthNr > 9 ? monthNr.toString() : "0" + monthNr;
         return new Promise<Sale[]>(async (resolve) => {
             resolve(
-                await this.db.execute<Sale[]>(
+                await this.db.fetch<Sale[]>(
                     "select * from sales where strftime('%m', saledate) = ? order by date(saledate) desc",
                     monthStr
                 )
             );
         });
+    }
+
+    deleteSale(id: number): Promise<boolean> {
+        return new Promise<boolean>(async resolve => {
+            resolve(await this.db.execute("delete from sales where id = ?", id));
+        })
     }
 }

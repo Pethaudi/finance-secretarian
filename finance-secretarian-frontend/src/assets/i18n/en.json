@@ -1,4 +1,8 @@
 {
+    "general": {
+        "yes": "yes",
+        "no": "no"
+    },
     "app": {
         "header": "Finance Secretarian",
         "logout": "logout"
@@ -17,7 +21,8 @@
         "soldAt": "Date",
         "note": "Notes",
         "notSaved": "The sale couldn't be saved",
-        "what": "What?"
+        "what": "What?",
+        "tooltip": "Do you really want delete this sale?"
     },
     "categories": {
         "paper": "Paper",

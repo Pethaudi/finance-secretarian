@@ -47,11 +47,15 @@ input, select {
 }
 
 #display-latest-sales {
+    position: relative;
     margin-top: var(--margin);
+    height: 20rem;
+    width: 100%;
+    overflow: scroll;
 }
 
 #display-latest-sales > table {
-    width: calc(100%);
+    width: 100%;
 }
 
 #display-latest-sales thead td {
@@ -64,10 +68,70 @@ input, select {
     background: var(--primary-reduced-opacity);
 }
 
+.delete-row {
+    width: 1%;
+    white-space:nowrap;
+}
+
+#tooltip {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+#tooltip::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: var(--background-dark);
+    opacity: 0.5;
+}
+
+#tooltip-box {
+    position: absolute;
+    height: fit-content;
+    min-width: 8rem;
+    width: fit-content;
+    background: var(--background-light);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+#text {
+    margin: var(--margin);
+    margin-bottom: calc(2 * var(--margin));
+    text-align: center;
+}
+
+#button-container {
+    position: relative;
+    bottom: var(--margin);
+    width: 100%;
+    height: fit-content;
+}
+
+#button-container > .button {
+    position: absolute;
+    right: var(--margin);
+    bottom: 0;
+}
+
+#button-container > .error-button {
+    position: relative;
+    left: var(--margin);
+    bottom: 100%;
+}
+
 @media screen and (max-width: 768px) {
 
     #body {
         padding: 0;
+        width: 100%;
     }
 
     #enter-sale {
@@ -80,5 +144,9 @@ input, select {
 
     #center {
         width: 100%;
+    }
+
+    .hide-on-small-screen {
+        display: none;
     }
 }

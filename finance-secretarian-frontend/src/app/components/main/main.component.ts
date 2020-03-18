@@ -15,16 +15,19 @@ export class MainComponent implements OnInit {
     categories: Category[]
     saveSuccessful: boolean;
     latestSales: Sale[];
+    isTooltipVisible: boolean;
+    saleToDelete: Sale | null;
 
     constructor(private salesService: SalesService, private categoriesService: CategoriesService) {}
 
     async ngOnInit(): Promise<void> {
         this.saveSuccessful = true;
+        this.isTooltipVisible = false;
+        this.saleToDelete = null;
         this.initInputSale();
         this.categories = new Array<Category>();
         this.latestSales = new Array<Sale>();
         this.categories = await this.categoriesService.getCategories();
-        console.log("categories before getting paper id", this.categories)
         this.inputSale.categoryId = this.categories.find(category => category.category === "paper").id;
         this.latestSales = await this.salesService.getSales(10);
     }
@@ -55,5 +58,19 @@ export class MainComponent implements OnInit {
 
     getCategory(id: number): string {
         return this.categories.find(category => category.id === id).category;
+    }
+
+    async deleteSale() {
+        if (await this.salesService.deleteSale(this.saleToDelete)) {
+            this.latestSales = this.latestSales.filter(elem => elem.id !== this.saleToDelete.id);
+        } else {
+            console.log("error");
+        }
+        this.toggleTooltip(null);
+    }
+
+    toggleTooltip(sale: Sale | null) {
+        this.isTooltipVisible = !this.isTooltipVisible;
+        this.saleToDelete = sale;
     }
 }

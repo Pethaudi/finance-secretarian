@@ -34,4 +34,18 @@ export class SalesService {
                 })
         })
     }
+
+    deleteSale(sale: Sale): Promise<boolean> {
+        return new Promise(resolve => {
+            this.http.delete(environment.apiUrl + "sales/" + sale.id)
+                .subscribe({
+                    next: () => {
+                        resolve(true);
+                    },
+                    error: () => {
+                        resolve(false);
+                    }
+                });
+        });
+    }
 }

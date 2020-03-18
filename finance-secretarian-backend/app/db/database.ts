@@ -15,7 +15,7 @@ export class Database {
     /**
      * executes a given query with the given params and returns all results
      */
-    execute<T>(query: string, ...params: any): Promise<T> {
+    fetch<T>(query: string, ...params: any): Promise<T> {
         return new Promise(
             resolve => {
                 this.db.all(query, ...params, (err: any, result: T) => {
@@ -31,12 +31,12 @@ export class Database {
     /**
      * executes a given query with the given params and returns the success
      */
-    insert<T>(query: string, ...params: any): Promise<boolean> {
+    execute<T>(query: string, ...params: any): Promise<boolean> {
         return new Promise(
             resolve => {
                 this.db.run(query, ...params, (err: any) => {
                     if (err) {
-                        throw resolve(false);
+                        resolve(false);
                     }
                     resolve(true);
                 })
