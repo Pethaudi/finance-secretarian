@@ -9,6 +9,9 @@ const CategoriesRouter = express.Router();
 CategoriesRouter.use(cors());
 CategoriesRouter.use(authorizationMiddleware)
 
+/**
+ * returns all fetched categories
+ */
 CategoriesRouter.get("/", async (req: Request, res: Response) => {
 	res.setHeader("Content-Type", "application/json");
 	res.status(200);

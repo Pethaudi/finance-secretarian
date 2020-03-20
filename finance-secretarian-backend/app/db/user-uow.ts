@@ -1,6 +1,9 @@
 import { Database } from "./database";
 import { User } from "../entities/user.i";
 
+/**
+ * This unit of work manages everything about users
+ */
 export class UserUow {
 	private static _instance: UserUow | null = null;
 

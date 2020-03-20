@@ -3,10 +3,13 @@ import { UserUow } from "../db/user-uow";
 
 /**
  * own basic-auth implementation
- * saves the userId in the req-object
+ * authenticates the user, if not possible it aborts the request and sends 401
+ * if successful it saves the userid in the req-object
  */
 export default async (req: Request, res: Response, next: NextFunction) => {
+    // is there even an authorization field in the header
     if (req.headers.authorization) {
+        // decoding the base64 string
         const encoded = req.headers.authorization.split(" ");
         const credentials = Buffer.from(encoded[1], 'base64').toString().split(":");
         req.userId = await UserUow.Instance.getUserId(credentials[0], credentials[1]);

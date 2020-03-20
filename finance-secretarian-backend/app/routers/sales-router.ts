@@ -11,7 +11,7 @@ SalesRouter.use(cors());
 SalesRouter.use(Authorization);
 
 /**
- * returns all sales of the user passed by the authenticator
+ * returns all sales of the user
  */
 SalesRouter.get("/", async (req: Request, res: Response) => {
 	res.setHeader("Content-Type", "application/json");
@@ -19,12 +19,18 @@ SalesRouter.get("/", async (req: Request, res: Response) => {
 	res.send((await SalesUow.Instance.getSales(req.userId!!)));
 });
 
+/**
+ * returns the latest n sales of the user
+ */
 SalesRouter.get("/:number", async (req: Request, res: Response) => {
     res.setHeader("Content-Type", "application/json");
     res.status(200);
     res.send(await SalesUow.Instance.getLatestNSales(Number.parseInt(req.params.number)));
 })
 
+/**
+ * returns the sales for the given period of the user
+ */
 SalesRouter.get("/:month/:year", async (req: Request, res: Response) => {
     res.setHeader("Content-Type", "application/json");
     res.status(200);
@@ -51,6 +57,9 @@ SalesRouter.post("/", async (req: Request, res: Response) => {
     res.send();
 })
 
+/**
+ * deletes the given sale
+ */
 SalesRouter.delete("/:id", async (req: Request, res: Response) => {
     if (await SalesUow.Instance.deleteSale(Number.parseInt(req.params.id))) {
         res.status(200);

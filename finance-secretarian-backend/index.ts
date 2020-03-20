@@ -7,15 +7,17 @@ import { LoginRouter } from "./app/routers/login-router";
 import { SalesRouter } from "./app/routers/sales-router";
 import { CategoriesRouter } from "./app/routers/categories-router";
 
-const port = 5500;
+const port = 5500; // custom port
 const app = express();
 
-app.use(compression())
-app.use(helmet())
-app.use(bodyParser.json());
+app.use(compression()); // compressing the http 
+app.use(helmet()); // basic-protection against common attacks
+app.use(bodyParser.json()); // understanding json-data sent in the body
 
+// registering router
 app.use("/login", LoginRouter);
 app.use("/sales", SalesRouter);
 app.use("/categories", CategoriesRouter);
 
+// starting the app
 app.listen(port, () => console.log(`listening at port ${port}`));

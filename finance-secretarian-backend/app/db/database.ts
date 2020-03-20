@@ -1,5 +1,13 @@
 import * as sqlite3 from "sqlite3";
 
+/**
+ * this class manages the access to the database, because there is only one instance
+ * possible, the possibility for inconsistent database-access should be really low
+ * 
+ * this class has 2 basic functions:
+ *  * returning data with fetch
+ *  * executing script with execute
+ */
 export class Database {
 
     private static _instance: Database | null = null;

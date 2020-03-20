@@ -1,6 +1,9 @@
 import { Database } from "./database";
 import { Sale } from "../entities/sale.i";
 
+/**
+ * This unit of work manages everything about sales
+ */
 export class SalesUow {
 
     private static _instance: SalesUow | null;
@@ -14,7 +17,7 @@ export class SalesUow {
     }
 
     /**
-     * get all sales of the user from the database
+     * get all sales of a user from the database
      * @param userId userid
      */
     getSales(userId: number): Promise<Sale[] | null> {
@@ -23,6 +26,10 @@ export class SalesUow {
         });
     }
 
+    /**
+     * saves a sale in the database
+     * @param sale sale to save
+     */
     createSale(sale: Sale): Promise<boolean> {
         return new Promise<boolean>(async (resolve) => {
             resolve(
@@ -34,6 +41,10 @@ export class SalesUow {
         });
     }
 
+    /**
+     * fetches the latest n sales of a user from the database
+     * @param n number of sales to return
+     */
     getLatestNSales(n: number): Promise<Sale[]> {
         return new Promise<Sale[]>(async (resolve) => {
             resolve(
@@ -42,6 +53,11 @@ export class SalesUow {
         });
     }
 
+    /**
+     * fetches all sales of the given perioud of a user from the database
+     * @param month month to fetch from
+     * @param year year to fetch from
+     */
     getSalesPerPeriod(month: number, year: number): Promise<Sale[]> {
         const monthStr = month > 9 ? month.toString() : "0" + month;
         return new Promise<Sale[]>(async resolve => {
@@ -54,6 +70,10 @@ export class SalesUow {
         });
     }
 
+    /**
+     * deletes a sale from the database
+     * @param id id of the sale to delete
+     */
     deleteSale(id: number): Promise<boolean> {
         return new Promise<boolean>(async resolve => {
             resolve(await this.db.execute("delete from sales where id = ?", id));
