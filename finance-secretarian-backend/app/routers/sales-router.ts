@@ -25,7 +25,7 @@ SalesRouter.get("/", async (req: Request, res: Response) => {
 SalesRouter.get("/:number", async (req: Request, res: Response) => {
     res.setHeader("Content-Type", "application/json");
     res.status(200);
-    res.send(await SalesUow.Instance.getLatestNSales(Number.parseInt(req.params.number)));
+    res.send(await SalesUow.Instance.getLatestNSales(Number.parseInt(req.params.number), req.userId!!));
 })
 
 /**
@@ -34,7 +34,7 @@ SalesRouter.get("/:number", async (req: Request, res: Response) => {
 SalesRouter.get("/:month/:year", async (req: Request, res: Response) => {
     res.setHeader("Content-Type", "application/json");
     res.status(200);
-    res.send(await SalesUow.Instance.getSalesPerPeriod(Number.parseInt(req.params.month), Number.parseInt(req.params.year)));
+    res.send(await SalesUow.Instance.getSalesPerPeriod(Number.parseInt(req.params.month), Number.parseInt(req.params.year), req.userId!!));
 })
 
 /**
@@ -61,7 +61,7 @@ SalesRouter.post("/", async (req: Request, res: Response) => {
  * deletes the given sale
  */
 SalesRouter.delete("/:id", async (req: Request, res: Response) => {
-    if (await SalesUow.Instance.deleteSale(Number.parseInt(req.params.id))) {
+    if (await SalesUow.Instance.deleteSale(Number.parseInt(req.params.id), req.userId!!)) {
         res.status(200);
     } else {
         res.status(500);

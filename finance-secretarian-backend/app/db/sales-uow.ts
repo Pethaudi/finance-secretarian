@@ -45,10 +45,10 @@ export class SalesUow {
      * fetches the latest n sales of a user from the database
      * @param n number of sales to return
      */
-    getLatestNSales(n: number): Promise<Sale[]> {
+    getLatestNSales(n: number, userid: number): Promise<Sale[]> {
         return new Promise<Sale[]>(async (resolve) => {
             resolve(
-                await this.db.fetch<Sale[]>("select * from sales order by date(saledate) desc limit ?", n)
+                await this.db.fetch<Sale[]>("select * from sales where userid = ? order by date(saledate) desc limit ?", userid, n)
             );
         });
     }
@@ -58,13 +58,13 @@ export class SalesUow {
      * @param month month to fetch from
      * @param year year to fetch from
      */
-    getSalesPerPeriod(month: number, year: number): Promise<Sale[]> {
+    getSalesPerPeriod(month: number, year: number, userid: number): Promise<Sale[]> {
         const monthStr = month > 9 ? month.toString() : "0" + month;
         return new Promise<Sale[]>(async resolve => {
             resolve(
                 await this.db.fetch(
-                    "select * from sales where strftime('%m', saledate) = ? AND strftime('%Y', saledate) = ?;",
-                    monthStr, year.toString()
+                    "select * from sales where strftime('%m', saledate) = ? AND strftime('%Y', saledate) = ? AND userid = ?;",
+                    monthStr, year.toString(), userid
                 )
             );
         });
@@ -74,9 +74,9 @@ export class SalesUow {
      * deletes a sale from the database
      * @param id id of the sale to delete
      */
-    deleteSale(id: number): Promise<boolean> {
+    deleteSale(id: number, userid: number): Promise<boolean> {
         return new Promise<boolean>(async resolve => {
-            resolve(await this.db.execute("delete from sales where id = ?", id));
+            resolve(await this.db.execute("delete from sales where id = ? AND userid = ?", id, userid));
         })
     }
 }
