@@ -11,12 +11,14 @@ This project is structured in 2 sub-projects:
 Deploying a web-app can difficult and depends on which system you use, therefor I just explain how to do the basic-setup for this application, not for setting up the server.
 
 ### backend
- 1. in the terminal open the finance-secretarian-backend folder
- 2. install the sqlite3 cli
- 3. run `sqlite3 /opt/finance_secretarian.db` (this creates the database in /opt)
- 4. in the sqlite3 cli you run `.read INIT_DB.sql` (this populates the database with tables and basic entries)
- 5. run `npm run build` (transpiles the ts-files to js and saves them in /dist)
- 6. run `npm run launch` (launches the server at port 5500)
+ 1. install nodejs
+ 2. in the terminal open the finance-secretarian-backend folder
+ 3. run `npm i`
+ 4. install the sqlite3 cli
+ 5. run `sqlite3 /opt/finance_secretarian.db` (this creates the database in /opt)
+ 6. in the sqlite3 cli you run `.read INIT_DB.sql` (this populates the database with tables and basic entries)
+ 7. run `npm run build` (transpiles the ts-files to js and saves them in /dist)
+ 8. run `npm run launch` (launches the server at port 5500)
 
 ### frontend
 If you just want to launch a test-server (not suggested for production-systems) run `npm start` if you want to build and deploy the webapp run `npm run build`.

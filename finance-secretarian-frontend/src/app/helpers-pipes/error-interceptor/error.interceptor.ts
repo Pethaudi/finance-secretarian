@@ -10,6 +10,9 @@ import { catchError } from "rxjs/operators";
 import { UserService } from 'src/app/services/user-service/user.service';
 import { Router } from '@angular/router';
 
+/**
+ * this interceptor redirects the user to the login page if a http-request returns 401
+ */
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 

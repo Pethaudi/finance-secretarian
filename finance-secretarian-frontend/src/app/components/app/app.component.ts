@@ -9,8 +9,13 @@ import { TranslateService } from '@ngx-translate/core';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	title = 'finance-secretarian-frontend';
+	title = 'finance-secretarian';
 
+    /**
+     * setting the default language
+     * @param translate
+     * @param userService
+     */
 	constructor(private translate: TranslateService, public userService: UserService) {
 		this.translate.use("en");
     }

@@ -23,6 +23,13 @@ export class MonthlyStatisticsComponent implements OnInit {
     brochures: Sale[];
     categories: Category[];
     
+    /**
+     * initializing variables
+     * @param saleService
+     * @param route
+     * @param categoryService
+     * @param router
+     */
     constructor(private saleService: SalesService, private route: ActivatedRoute,
         private categoryService: CategoriesService, private router: Router) {
         this.sales = new Array<Sale>();
@@ -52,6 +59,10 @@ export class MonthlyStatisticsComponent implements OnInit {
         });
     }
 
+    /**
+     * fetching the parameters from the route and the server
+     * filtering and preparing data for displaying
+     */
     async ngOnInit() {
         await this.getParams();
         this.sales = await this.saleService.getSalesPerPeriod(this.month, this.year);
@@ -89,6 +100,9 @@ export class MonthlyStatisticsComponent implements OnInit {
         }
     }
 
+    /**
+     * saves the params of the url in the local variables month & year
+     */
     getParams(): Promise<void> {
         return new Promise<void>(async resolve => {
             this.route.paramMap.subscribe(
@@ -101,6 +115,10 @@ export class MonthlyStatisticsComponent implements OnInit {
         })
     }
 
+    /**
+     * computes the amount of sales
+     * @param sales sales to get the amount
+     */
     getAmount(sales: Sale[]): number {
         if (sales.length === 0) {
             return 0;
@@ -108,6 +126,10 @@ export class MonthlyStatisticsComponent implements OnInit {
         return sales.map(sale => sale.amountSold).reduce((prev, cur) => cur + prev);
     }
 
+    /**
+     * computes the revenue of sales
+     * @param sales sales to get the revenue
+     */
     getTotalRevenue(sales: Sale[]): number {
         if (sales.length === 0) {
             return 0;
@@ -115,6 +137,10 @@ export class MonthlyStatisticsComponent implements OnInit {
         return sales.map(sale => sale.revenue).reduce((prev, cur) => prev + cur);
     }
 
+    /**
+     * generates the link for the next/previous month
+     * @param next link for the next month (if false it generates the link for the previous month)
+     */
     generateLink(next: boolean) {
         let link = "/monthly-statistics/";
 

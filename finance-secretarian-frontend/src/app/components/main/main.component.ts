@@ -20,6 +20,9 @@ export class MainComponent implements OnInit {
 
     constructor(private salesService: SalesService, private categoriesService: CategoriesService) {}
 
+    /**
+     * initalizing all values and fetching the needed values from the server
+     */
     async ngOnInit(): Promise<void> {
         this.saveSuccessful = true;
         this.isTooltipVisible = false;
@@ -32,6 +35,9 @@ export class MainComponent implements OnInit {
         this.latestSales = await this.salesService.getSales(100);
     }
 
+    /**
+     * initializing the inputSale
+     */
     initInputSale() {
         this.inputSale = {
             id: null,
@@ -44,6 +50,9 @@ export class MainComponent implements OnInit {
         };
     }
 
+    /**
+     * trying to save the new sale. If successful it resets the inputsale
+     */
     async saveNewSale() {
         if (!this.inputSale.amountSold) {
             this.inputSale.amountSold = 1;
@@ -56,10 +65,17 @@ export class MainComponent implements OnInit {
         }
     }
 
+    /**
+     * returns the name of the category
+     * @param id id of the category
+     */
     getCategory(id: number): string {
         return this.categories.find(category => category.id === id).category;
     }
 
+    /**
+     * tries to delete a sale
+     */
     async deleteSale() {
         if (await this.salesService.deleteSale(this.saleToDelete)) {
             this.latestSales = this.latestSales.filter(elem => elem.id !== this.saleToDelete.id);
@@ -69,6 +85,10 @@ export class MainComponent implements OnInit {
         this.toggleTooltip(null);
     }
 
+    /**
+     * toggles the tooltip for confirming a deletion
+     * @param sale sale to possible delete, which gets saved in a local variable
+     */
     toggleTooltip(sale: Sale | null) {
         this.isTooltipVisible = !this.isTooltipVisible;
         this.saleToDelete = sale;

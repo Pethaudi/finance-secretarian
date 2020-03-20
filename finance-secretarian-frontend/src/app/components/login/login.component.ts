@@ -16,6 +16,11 @@ export class LoginComponent {
     disableForms: boolean;
     failedLogin: boolean;
 
+    /**
+     * redirecting the user if already loggedin
+     * @param userService
+     * @param router
+     */
     constructor(private userService: UserService, private router: Router) {
         this.disableForms = false;
         this.failedLogin = false;
@@ -24,6 +29,9 @@ export class LoginComponent {
         }
     }
 
+    /**
+     * trying to log in
+     */
     async login() {
         this.disableForms = true;
         await this.userService.login(this.email, this.password);

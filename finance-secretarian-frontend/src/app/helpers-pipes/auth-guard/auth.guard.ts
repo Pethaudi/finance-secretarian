@@ -3,6 +3,9 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Rout
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/services/user-service/user.service';
 
+/**
+ * this guard protects the routes from authorized access
+ */
 @Injectable({
 	providedIn: 'root'
 })

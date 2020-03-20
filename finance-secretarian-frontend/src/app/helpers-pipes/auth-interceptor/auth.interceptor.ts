@@ -8,6 +8,9 @@ import {
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/services/user-service/user.service';
 
+/**
+ * this interceptor adds the credentials to every http-request
+ */
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 

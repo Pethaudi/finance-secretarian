@@ -1,27 +1,14 @@
-# FinanceSecretarianFrontend
+# finance-secretarian-frontend
+This project contains the frontend for the finance-secretarian-backend.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
+## deploying
+Deploying a web-app can difficult and depends on which system you use, therefor I just explain how to do the basic-setup for this application, not for setting up the server.
 
-## Development server
+steps to deploy frontend:
+ 1. install nodejs
+ 2. in the terminal open the finance-secretarian-backend folder
+ 3. run `npm i`
+ 4. If you just want to launch a test-server (not suggested for production-systems) run `npm start` if you want to build and deploy the webapp run `npm run build`.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## informations for devs
+I think the project-structure is self-explaining. The 2 things to keep in mind is that with every request the auth-interceptors gets invoked and adds automatically the credentials and the translation-files (which should contain every static piece of text) are located in `assets/i18n`.

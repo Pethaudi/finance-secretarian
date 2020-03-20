@@ -5,7 +5,10 @@ import { AuthGuard } from './helpers-pipes/auth-guard/auth.guard';
 import { MainComponent } from './components/main/main.component';
 import { MonthlyStatisticsComponent } from './components/monthly-statistics/monthly-statistics.component';
 
-
+/**
+ * contains the routes.
+ * protected routes needs canActivate: [AuthGuard]
+ */
 const routes: Routes = [
 	{
 		path: "",
