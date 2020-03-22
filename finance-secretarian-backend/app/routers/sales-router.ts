@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import * as express from "express";
-import { SalesUow } from "./../db/sales-uow";
+import { SalesUow } from "../uow/sales-uow";
 import cors from "cors";
 import Authorization from '../middlewares/authorization-middleware';
 import { Sale } from "../entities/sale.i";

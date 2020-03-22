@@ -18,12 +18,12 @@ steps to deploy backend:
 This is an nodejs backend with expressjs, sqlite3 and typescript.
 
 The projectstructure is the following:
- * db (contains library for accessing database the unit of work)
+ * uow (contains classes for accessing database and other units of work)
  * entities (contains the interface files for the entities saved in the database)
  * middlewares (contains all middlewares for express)
  * routers (contains the routes for express)
 
-## db
+## uow
 Every class in here is a singleton to prevent multiple database-access.
 
 ## routers

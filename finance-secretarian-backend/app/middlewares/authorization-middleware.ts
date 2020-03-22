@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { UserUow } from "../db/user-uow";
+import { UserUow } from "../uow/user-uow";
 
 /**
  * own basic-auth implementation

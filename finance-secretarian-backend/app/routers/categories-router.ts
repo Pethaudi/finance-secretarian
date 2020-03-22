@@ -1,7 +1,7 @@
 import { Response, Request } from "express";
 import * as express from "express";
 import cors from "cors";
-import { CategoriesUow } from "../db/categories-uow";
+import { CategoriesUow } from "../uow/categories-uow";
 import authorizationMiddleware from "../middlewares/authorization-middleware";
 
 const CategoriesRouter = express.Router();

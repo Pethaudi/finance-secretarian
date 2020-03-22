@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { UserUow } from "../db/user-uow";
+import { UserUow } from "../uow/user-uow";
 import * as express from "express";
 import cors from "cors";
 import { User } from "../entities/user.i";
