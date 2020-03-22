@@ -3,7 +3,7 @@ import helmet from "helmet";
 import compression from "compression";
 import * as bodyParser from "body-parser";
 
-import { LoginRouter } from "./app/routers/users-router";
+import { UsersRouter } from "./app/routers/users-router";
 import { SalesRouter } from "./app/routers/sales-router";
 import { CategoriesRouter } from "./app/routers/categories-router";
 
@@ -15,7 +15,7 @@ app.use(helmet()); // basic-protection against common attacks
 app.use(bodyParser.json()); // understanding json-data sent in the body
 
 // registering router
-app.use("/login", LoginRouter);
+app.use("/users", UsersRouter);
 app.use("/sales", SalesRouter);
 app.use("/categories", CategoriesRouter);
 

@@ -27,19 +27,23 @@ UsersRouter.post("/", async (req: Request, res: Response) => {
 });
 
 UsersRouter.post("/register", async (req: Request, res: Response) => {
-    if (req.body["email"] && req.body["password"] && req.body["branch"]) {
+    if (req.body["email"] && req.body["password"]) {
         const newUser: User = {
             id: null,
             email: req.body["email"],
             password: req.body["password"],
-            branch: req.body["branch"]
+            branch: req.body["branch"] ?? ""
         };
         if (await UserUow.Instance.createUser(newUser)) {
             res.status(201);
         } else {
             res.status(409)
         }
+    } else {
+        res.status(400)
     }
+
+    res.send();
 })
 
 export { UsersRouter };
