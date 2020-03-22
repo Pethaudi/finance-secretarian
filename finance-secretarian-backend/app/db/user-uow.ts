@@ -22,7 +22,15 @@ export class UserUow {
 	 * @param password password of the user
 	 */
 	async getUserId(email: string, password: string): Promise<number | null> {
-		const result = await this.db.fetch<User[]>("SELECT * FROM USERS WHERE email = ? AND password = ?", email, password);
+		const result = await this.db.fetch<User[]>("SELECT * FROM USERS WHERE email = lower(?) AND password = ?", email, password);
 		return result.length > 0 ? result[0].id : null;
-	}
+    }
+    
+    /**
+     * checks if the email is and tries to create it
+     * @param user user to create
+     */
+    async createUser(user: User): Promise<boolean> {
+        return await this.db.execute("INSERT INTO USERS (email, password, branch) values (lower(?), ?, ?)", user.email, user.password, user.branch);
+    }
 }

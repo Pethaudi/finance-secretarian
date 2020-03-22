@@ -18,11 +18,7 @@ export class CategoriesUow {
     /**
      * fetches all categories from the database
      */
-    getCategories(): Promise<Category[]> {
-        return new Promise<Category[]>(
-            async resolve => {
-                resolve(await this.db.fetch<Category[]>("select * from categories"));
-            }
-        )
+    async getCategories(): Promise<Category[]> {
+        return await this.db.fetch<Category[]>("select * from categories");
     }
 }

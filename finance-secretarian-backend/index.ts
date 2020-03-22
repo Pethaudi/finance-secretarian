@@ -3,7 +3,7 @@ import helmet from "helmet";
 import compression from "compression";
 import * as bodyParser from "body-parser";
 
-import { LoginRouter } from "./app/routers/login-router";
+import { LoginRouter } from "./app/routers/users-router";
 import { SalesRouter } from "./app/routers/sales-router";
 import { CategoriesRouter } from "./app/routers/categories-router";
 
