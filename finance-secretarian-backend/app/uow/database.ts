@@ -1,4 +1,5 @@
 import * as sqlite3 from "sqlite3";
+import { DB_PATH } from "./../../environment";
 
 /**
  * this class manages the access to the database, because there is only one instance
@@ -17,7 +18,7 @@ export class Database {
 
     private db: any; 
     private constructor() {
-        this.db = new sqlite3.Database("/opt/finance_secretarian.db");
+        this.db = new sqlite3.Database(DB_PATH);
     }
 
     /**
