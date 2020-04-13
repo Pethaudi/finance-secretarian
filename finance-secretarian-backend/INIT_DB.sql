@@ -20,7 +20,7 @@ CREATE TABLE USERS (
     branch VARCHAR(255)
 );
 
-INSERT INTO USERS (email, password, branch) VALUES ('pethaudi@yahoo.de', 'test', 'VB');
+INSERT INTO USERS (email, password, branch) VALUES ('admin', 'admin', '');
 
 CREATE TABLE SALES (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
