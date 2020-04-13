@@ -1,10 +1,16 @@
-# finance-secretarian-backend
-This project contains the backend for the finance-secretarian-frontend.
+# Finance-Secretarian
+This app aims to support the finance-secretarian in their work in their branches. It provides a way to input sales and show monthly statistics.
 
-## deploying
+This project is structured in 2 sub-projects:
+ * a NodeJs backend with a sqlite-database
+ * an angular9 frontend
+
+(note: at the moment the authentication works with basic-auth so it is not that safe)
+
+## deploying on your own (linux)
 Deploying a web-app can difficult and depends on which system you use, therefor I just explain how to do the basic-setup for this application, not for setting up the server.
 
-steps to deploy backend:
+### backend
  1. install nodejs
  2. in the terminal open the finance-secretarian-backend folder
  3. run `npm i`
@@ -14,17 +20,17 @@ steps to deploy backend:
  7. run `npm run build` (transpiles the ts-files to js and saves them in /dist)
  8. run `npm run launch` (launches the server at port 5500)
 
-## informations for devs
-This is an nodejs backend with expressjs, sqlite3 and typescript.
+### frontend
+If you just want to launch a test-server (not suggested for production-systems) run `npm start` if you want to build and deploy the webapp run `npm run build`.
 
-The projectstructure is the following:
- * uow (contains classes for accessing database and other units of work)
- * entities (contains the interface files for the entities saved in the database)
- * middlewares (contains all middlewares for express)
- * routers (contains the routes for express)
+## helping developing
+You can program your own version of this software, but I would be pleased if we would work together to make our international more efficient.
+You can message me on facebook or via email (pethaudi@yahoo.de)
 
-## uow
-Every class in here is a singleton to prevent multiple database-access.
-
-## routers
-Every router needs to contain `router.use(cors())` so we can access it in the frontend. Also if the route needs to be secured you must use authorization middleware.
+## helping if you dont know how to program
+Not every comrade understands english, therefor we need to translate the app. The static content of the page is saved in translation-files in `finance-secretarian-frontend/src/assets/i18n/`.
+You can help if you optimize or create own translation-files.
+If you create an own translation-file:
+ 1. create an file with the following name: [the ISO-639-1 norm for the language].json (https://de.wikipedia.org/wiki/Liste_der_ISO-639-1-Codes)
+ 2. copy the content of en.json
+ 3. replace the value of the json key: "key": "value"
