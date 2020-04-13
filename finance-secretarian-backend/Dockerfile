@@ -1,4 +1,3 @@
-# to build docker-images: docker build -t finance-secretarian-backend .
 FROM node:13
 EXPOSE 5500
 
