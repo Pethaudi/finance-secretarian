@@ -1,0 +1,12 @@
+version: '3'
+services:
+  finance-secretarian-frontend:
+    build: ./finance-secretarian-frontend
+    ports:
+      - "4200:80"
+  finance-secretarian-backend:
+    build: ./finance-secretarian-backend
+    ports:
+      - "5500:5500"
+    volumes:
+      - /opt:/opt
