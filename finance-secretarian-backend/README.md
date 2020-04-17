@@ -4,7 +4,7 @@ This project contains the backend for the finance-secretarian-frontend.
 ## deploying
 To deploy this app with docker, ensure docker is installed. After cloning this repo and stepping into the backend-folder you need to run (maybe under sudo):
 1. `docker build -t finance-secretarian-backend .`
-2. `docker run -p 5500:5500 -d finance-secratarian-backend`
+2. `docker run -p 5500:5500 -v /opt:/opt -d finance-secratarian-backend` (first /opt is your source-folder)
 
 ## informations for devs
 This is an nodejs backend with expressjs, sqlite3 and typescript.
