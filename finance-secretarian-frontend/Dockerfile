@@ -8,7 +8,6 @@ FROM node:13 as builder
 FROM nginx
     RUN rm /etc/nginx/conf.d/default.conf
     COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
-    RUN cat /etc/nginx/conf.d/default.conf
     RUN rm -rf /usr/share/nginx/html/*
     COPY --from=builder ./finance-secretarian/finance-secretarian-frontend/dist/finance-secretarian-frontend/* /usr/share/nginx/html/
     EXPOSE 80
